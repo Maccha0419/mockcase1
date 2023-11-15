@@ -1,0 +1,46 @@
+.header {
+    background: #fff;
+}
+.header__inner {
+    margin: 0 auto;
+    padding: 20px 0px;
+    max-width: 1230px;
+}
+.header-utilities {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header__logo {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 30px;
+}
+.header-utilities nav {
+    width: 25%;
+}
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: -10px 0;
+}
+.header-nav__link {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+}
+.header-nav__button {
+    border: none;
+    background: transparent;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.footer {
+    text-align: center;
+    margin: 20px;
+}

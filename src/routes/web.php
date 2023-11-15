@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StampController;
+use App\Http\Controllers\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('auth')->group(function () {
+    Route::get('/', [StampController::class, 'index']);
+    Route::post('/start_work', [StampController::class, 'start_work']);
+    Route::post('/end_work', [StampController::class, 'end_work']);
+    Route::post('/start_rest', [StampController::class, 'start_rest']);
+    Route::post('/end_rest', [StampController::class, 'end_rest']);
+
+    Route::get('/attendance', [AttendanceController::class, 'index']);
+    Route::get('/attendance/next_date', [AttendanceController::class, 'next_date']);
+    Route::get('/attendance/previous_date', [AttendanceController::class, 'previous_date']);
 });
