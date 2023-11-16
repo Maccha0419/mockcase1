@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StampController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/attendance', [AttendanceController::class, 'index']);
     Route::get('/attendance/next_date', [AttendanceController::class, 'next_date']);
     Route::get('/attendance/previous_date', [AttendanceController::class, 'previous_date']);
+
+    Route::get('/user', [UserController::class, 'index']);
+    Route::post('/user_information', [UserController::class, 'information']);
 });

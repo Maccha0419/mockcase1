@@ -14,8 +14,6 @@ class AttendanceController extends Controller
 {
     public function index()
     {
-        // $users = User::select('*')->join('stamps','users.id','=','stamps.user_id')->orderByRaw("stamps.stamp_date desc,stamps.start_work asc")->paginate(5);
-
         $date = Stamp::latest('stamp_date')->value('stamp_date');
         $users = User::select('*')->join('stamps','users.id','=','stamps.user_id')->orderByRaw("stamps.stamp_date desc,stamps.start_work asc")->where('stamp_date',$date)->paginate(5);
         return view('attendance', compact('users','date'));
