@@ -16,7 +16,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::middleware('auth')->group(function () {
+Route::middleware('verified')->group(function () {
     Route::get('/', [StampController::class, 'index']);
     Route::post('/start_work', [StampController::class, 'start_work']);
     Route::post('/end_work', [StampController::class, 'end_work']);
