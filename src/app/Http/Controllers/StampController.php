@@ -87,10 +87,8 @@ class StampController extends Controller
         $start_work = Stamp::where('user_id', $user->id)->latest()->value('start_work');//getだと配列になる？、get()でも値を取り出す関数でできそう
         $end_work = Stamp::where('user_id', $user->id)->latest()->value('end_work');
         $diffInSeconds = Carbon::parse($start_work)->diffInSeconds($end_work);//parseで文字列を時間型に？
-        $hours = floor($diffInSeconds / 3600);//小数点切り捨て
-        $minutes = floor(($diffInSeconds % 3600) / 60);
-        $seconds = $diffInSeconds % 60;
-        $total_work = $hours.":".$minutes.":".$seconds;
+
+        $total_work = \Hoge::Time($diffInSeconds);//エイリアス登録したクラスからTime関数を呼び出し
 
         $rest_time = Rest::where('stamp_id', $user->id)->latest()->value('rest_time');
         $total_rest = Rest::where('stamp_id', $user->id)->selectRaw('SEC_TO_TIME(SUM(TIME_TO_SEC(rest_time))) as total_rest')->value('total_rest');//合計を時間型で取得
@@ -145,10 +143,9 @@ class StampController extends Controller
             ]);
             $start_rest = Rest::where('stamp_id', $user->id)->latest()->value('start_rest');
             $diffInSeconds = Carbon::parse($start_rest)->diffInSeconds($end_rest);
-            $hours = floor($diffInSeconds / 3600);
-            $minutes = floor(($diffInSeconds % 3600) / 60);
-            $seconds = $diffInSeconds % 60;
-            $rest_time = $hours.":".$minutes.":".$seconds;
+
+            $rest_time = \Hoge::Time($diffInSeconds);//エイリアス登録したクラスからTime関数を呼び出し
+
             $Rest->update([
                 'rest_time' => $rest_time,
             ]);

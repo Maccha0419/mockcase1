@@ -10,16 +10,16 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     @yield('css')
-    </head>
+</head>
 
     <body>
     <header class="header">
         <div class="header__inner">
             <div class="header-utilities">
-                <h2 class="header__logo">Atte</h2>
+                <a href="/" class="header__logo">Atte</a>
                 <nav>
                     <ul class="header-nav">
-                        @if (Auth::check())
+                        @if (Auth::user() && Auth::user()->hasVerifiedEmail())
                         <li class="header-nav__item">
                             <a class="header-nav__link" href="/">ホーム</a>
                         </li>
@@ -47,7 +47,7 @@
     </main>
 
     <footer class="footer">
-        <p class="footer__inner">Atte.</p>
+        <p class="footer__inner">Atte, inc.</p>
     </footer>
 </body>
 

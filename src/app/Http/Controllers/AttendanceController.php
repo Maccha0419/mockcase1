@@ -46,10 +46,15 @@ class AttendanceController extends Controller
     {
         $current_date = $request->previous_date;
         $previous_date = Carbon::parse($current_date)->subDay()->toDateString();
+        $previous_date2 =Carbon::parse($current_date)->subYear(200)->toDateString();
 
         $save_date = Stamp::where('stamp_date',$previous_date)->get();
         while($save_date->isEmpty()===true){
             $previous_date = Carbon::parse($previous_date)->subDay()->toDateString();
+            if($previous_date=$previous_date2){
+                $previous_date = $current_date;
+                break ;
+            }
             $save_date = Stamp::where('stamp_date',$previous_date)->get();
         }
         $date = $previous_date;

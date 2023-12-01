@@ -20,7 +20,7 @@ class StampFactory extends Factory
             'end_work'=>$this->faker->time(),
             'total_rest'=>$this->faker->time(),
             'total_work'=>$this->faker->time(),
-            'stamp_date'=>$this->faker->date(),
+            'stamp_date'=>$this->faker->dateTimeBetween($startDate = 'now', $endDate = 'now'),
         ];
     }
 }

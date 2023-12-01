@@ -28,6 +28,7 @@
     height: 20px;
     color: #ff0000;
     text-align: left;
+    font-size: 13px;
 }
 
 .form__input--text input {

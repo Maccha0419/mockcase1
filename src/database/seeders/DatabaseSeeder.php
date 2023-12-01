@@ -14,6 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Stamp::factory()->count(100)->create();
+        Stamp::factory()->count(10)->create();
     }
 }

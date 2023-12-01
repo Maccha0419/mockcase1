@@ -44,6 +44,7 @@
     background-color: #fff;
     text-align: center;
     margin: 5px;
+    font-size: smaller;
 }
 body {
     max-height: 100vh;
