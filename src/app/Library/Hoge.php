@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Facade;
 
 class Hoge extends Facade
 {
-    public function Time ()
+    public function Time ($diffInSeconds)
     {
         $hours = floor($diffInSeconds / 3600);//小数点切り捨て
         $minutes = floor(($diffInSeconds % 3600) / 60);

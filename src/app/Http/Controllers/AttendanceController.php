@@ -25,7 +25,6 @@ class AttendanceController extends Controller
         $latest_date = Stamp::latest('stamp_date')->value('stamp_date');//2023-11-14
         $latest_date2 = Carbon::parse($latest_date)->addDay()->toDateString();//2023-11-15
         $current_date = $request->next_date;//2023-11-11
-
         $next_date = Carbon::parse($current_date)->addDay()->toDateString();//2023-11-12
         $save_date = Stamp::where('stamp_date',$next_date)->get();
 
@@ -47,7 +46,6 @@ class AttendanceController extends Controller
         $current_date = $request->previous_date;
         $previous_date = Carbon::parse($current_date)->subDay()->toDateString();
         $previous_date2 =Carbon::parse($current_date)->subYear(200)->toDateString();
-
         $save_date = Stamp::where('stamp_date',$previous_date)->get();
         while($save_date->isEmpty()===true){
             $previous_date = Carbon::parse($previous_date)->subDay()->toDateString();

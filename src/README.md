@@ -1,64 +1,114 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Atte（アット）
+AtteはWeb上で出勤、退勤および休憩の勤怠状況を管理できるサービスです。
+![Atte-Top](storage/Atte-top.png)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 作成した目的
+人事評価のため作成しました。制作目標は利用者数100人達成です。
 
-## About Laravel
+## アプリケーションURL
+<http://13.231.44.24/>
+ログイン前はログイン画面に移行します。会員登録を行なっていない場合は、登録後に使用できます。
+## 他のレポジトリ
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 機能一覧
+・会員登録機能
+・ログイン機能
+・ログアウト機能
+・勤務開始機能
+・勤務終了機能
+・休憩開始機能
+・休憩終了機能
+・日付別勤怠情報取得機能
+・ユーザー一覧機能
+・ユーザーごとの勤怠情報取得機能
+・ページネーション機能
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 使用技術（実行環境）
+- PHP 8.2.9
+- Laravel 8.83.8
+- MySQL 8.1.0
+- Nginx 1.22.1
+- AWS
+  - EC2
+  - RDS
+  - S3
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## テーブル設計
+Usersテーブル
+![table-users](storage/table-users.png)
 
-## Learning Laravel
+Stampsテーブル
+![table-stamps](storage/table-stamps.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Restsテーブル
+![table-rests](storage/table-rests.png)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## ER図
+![ER](storage/er.drawio.png)
 
-## Laravel Sponsors
+## 環境構築
+#### プロジェクトのセットアップ手順
+##### ディレクトリの作成
+アプリケーションを作成するために、開発環境を GitHub からクローンします。
+`laravel-docker-template.git`をクローンしてください。
+```bash
+$ git clone git@github.com:coachtech-material/laravel-docker-template.git
+```
+##### Docker の設定
+次に、Docker の設定を行なっていきます。
+複数のコンテナを扱うのでdocker-composeを使います。
+```bash
+$ docker-compose up -d --build
+$ code .
+```
+##### Laravel のパッケージのインストール
+docker-composeコマンドで PHPコンテナ内にログインし、composerコマンドを使って必要なパッケージをインストールします。
+```bash
+$ docker-compose exec php bash
+$ composer install
+```
+##### .envファイルの作成
+.envファイルは、.env.exampleファイルをコピーして作成しましょう。
+```bash
+cp .env.example .env
+exit
+```
+.envファイルは以下のように修正します。
+```
+// 前略
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
+// 後略
+```
+##### viewファイルの作成
+各ページのviewファイルを作成します。
+resources/viewsに、以下4つのBladeファイルを作成します。
+- index.blade.php
+- attendance.blade.php
+- user.blade.php
+- user_information.blade.php
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+また、resources/views/authに以下3つのBladeファイルを作成します。
+- login.blade.php
+- register.blade.php
+- verify-email.blade.php
 
-### Premium Partners
+さらに、resources/views/layoutsに以下のBladeファイルを作成します。
+- app.blade.php
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+##### cssファイルの作成
+cssファイルを作成します。
+public/cssに以下9つのファイルを配置してください。
+- index.css
+- attendance.css
+- user.css
+- user_information.css
+- login.css
+- register.css
+- verify-email.css
+- app.blade.css
+- sanitize.css
