@@ -126,6 +126,7 @@ Controllerファイルを作成し、以下のルート及びアクションを�
 ![controller](storage/controller.png)
 ##### Modelの作成
 各モデルを作成します。
+
 ![model](storage/model.png)
 ##### Fortifyの導入と会員登録機能、ログイン機能の実装
 Laravelをインストールしたプロジェクト内でfortifyをインストールし、関連ファイルを作成します。
@@ -210,10 +211,12 @@ MAIL_FROM_ADDRESS=<example@gmail.com>
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 ##### EC2の環境構築
-AWSにログイン後、EC2インスタンスを作成します。
-Amazon Linux 2にログイン後、Nginx、PHP、Composerをインストールします。
-PHP-FPM、NginXの設定を行います。
-上記で作成したLaravelプロジェクトをGitHubからクローンします。sockの設定、app/storageの権限の変更、PHPライブラリのインストール、.envファイルの設定を行います。
+AWSにログイン後、EC2インスタンスを作成します。　　
+Amazon Linux 2にログイン後、Nginx、PHP、Composerをイ
+ンストールします。　　
+PHP-FPM、NginXの設定を行います。　　
+上記で作成したLaravelプロジェクトをGitHubからクローンします。　　
+sockの設定、app/storageの権限の変更、PHPライブラリのインストール、.envファイルの設定を行います。
 
 以下のURLから閲覧できます。
 <http://13.231.44.24/>
@@ -221,10 +224,10 @@ PHP-FPM、NginXの設定を行います。
 メール認証機能は時間がなかったためしていません。
 また、同様の理由で本説明も簡潔に書いています。
 ##### RDSの環境構築
-AWSにログイン後、RDSでデータベースを作成します。
-Amazon Linux 2にログイン後、MySQLをインストールします。
-E上記で使用したC2インスタンスのセキュリティグループを設定します。
-.envを変更します。
+AWSにログイン後、RDSでデータベースを作成します。　　
+Amazon Linux 2にログイン後、MySQLをインストールします。　　
+E上記で使用したC2インスタンスのセキュリティグループを設定します。　　
+.envを変更します。　　
 マイグレーションを実行します。
 
 なお、DBの可視化をしたかったため、phpMyAdminをインストールし、.envファイルを設定しました。
