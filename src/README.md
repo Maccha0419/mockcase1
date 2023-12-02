@@ -211,11 +211,11 @@ MAIL_FROM_ADDRESS=<example@gmail.com>
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 ##### EC2の環境構築
-AWSにログイン後、EC2インスタンスを作成します。　　
+AWSにログイン後、EC2インスタンスを作成します。  
 Amazon Linux 2にログイン後、Nginx、PHP、Composerをイ
-ンストールします。　　
-PHP-FPM、NginXの設定を行います。　　
-上記で作成したLaravelプロジェクトをGitHubからクローンします。　　
+ンストールします。  
+PHP-FPM、NginXの設定を行います。  
+上記で作成したLaravelプロジェクトをGitHubからクローンします。  
 sockの設定、app/storageの権限の変更、PHPライブラリのインストール、.envファイルの設定を行います。
 
 以下のURLから閲覧できます。
@@ -224,10 +224,10 @@ sockの設定、app/storageの権限の変更、PHPライブラリのインス�
 メール認証機能は時間がなかったためしていません。
 また、同様の理由で本説明も簡潔に書いています。
 ##### RDSの環境構築
-AWSにログイン後、RDSでデータベースを作成します。　　
-Amazon Linux 2にログイン後、MySQLをインストールします。　　
-E上記で使用したC2インスタンスのセキュリティグループを設定します。　　
-.envを変更します。　　
+AWSにログイン後、RDSでデータベースを作成します。  
+Amazon Linux 2にログイン後、MySQLをインストールします。  
+E上記で使用したC2インスタンスのセキュリティグループを設定します。  
+.envを変更します。  
 マイグレーションを実行します。
 
 なお、DBの可視化をしたかったため、phpMyAdminをインストールし、.envファイルを設定しました。
