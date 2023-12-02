@@ -6,6 +6,7 @@ use App\Http\Controllers\StampController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\UserController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +32,4 @@ Route::middleware('verified')->group(function () {
     Route::get('/user', [UserController::class, 'index']);
     Route::post('/user_information', [UserController::class, 'information']);
 });
+
